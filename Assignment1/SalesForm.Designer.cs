@@ -39,11 +39,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.name_input = new System.Windows.Forms.TextBox();
+            this.id_input = new System.Windows.Forms.TextBox();
+            this.hours_input = new System.Windows.Forms.TextBox();
+            this.monthly_input = new System.Windows.Forms.TextBox();
+            this.bonus_output = new System.Windows.Forms.TextBox();
             this.calculate_button = new System.Windows.Forms.Button();
             this.print_button = new System.Windows.Forms.Button();
             this.clear_button = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             this.spanishbutton.TabIndex = 2;
             this.spanishbutton.Text = "Español";
             this.spanishbutton.UseVisualStyleBackColor = true;
-            this.spanishbutton.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.spanishbutton.CheckedChanged += new System.EventHandler(this.spanishbutton_CheckedChanged);
             // 
             // frenchbutton
             // 
@@ -92,7 +92,7 @@
             this.frenchbutton.TabIndex = 1;
             this.frenchbutton.Text = "Français";
             this.frenchbutton.UseVisualStyleBackColor = true;
-            this.frenchbutton.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.frenchbutton.CheckedChanged += new System.EventHandler(this.frenchbutton_CheckedChanged);
             // 
             // englishbutton
             // 
@@ -105,7 +105,7 @@
             this.englishbutton.TabStop = true;
             this.englishbutton.Text = "English";
             this.englishbutton.UseVisualStyleBackColor = true;
-            this.englishbutton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.englishbutton.CheckedChanged += new System.EventHandler(this.englishbutton_CheckedChanged);
             // 
             // label1
             // 
@@ -152,40 +152,45 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Sales Bonus:";
             // 
-            // name
+            // name_input
             // 
-            this.name.Location = new System.Drawing.Point(155, 196);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(142, 20);
-            this.name.TabIndex = 7;
+            this.name_input.Location = new System.Drawing.Point(155, 196);
+            this.name_input.Name = "name_input";
+            this.name_input.Size = new System.Drawing.Size(142, 20);
+            this.name_input.TabIndex = 7;
+            this.name_input.TextChanged += new System.EventHandler(this.name_input_TextChanged);
             // 
-            // textBox2
+            // id_input
             // 
-            this.textBox2.Location = new System.Drawing.Point(155, 226);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 20);
-            this.textBox2.TabIndex = 8;
+            this.id_input.Location = new System.Drawing.Point(155, 226);
+            this.id_input.Name = "id_input";
+            this.id_input.Size = new System.Drawing.Size(142, 20);
+            this.id_input.TabIndex = 8;
+            this.id_input.TextChanged += new System.EventHandler(this.id_input_TextChanged);
             // 
-            // textBox3
+            // hours_input
             // 
-            this.textBox3.Location = new System.Drawing.Point(155, 256);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 20);
-            this.textBox3.TabIndex = 9;
+            this.hours_input.Location = new System.Drawing.Point(155, 256);
+            this.hours_input.Name = "hours_input";
+            this.hours_input.Size = new System.Drawing.Size(142, 20);
+            this.hours_input.TabIndex = 9;
+            this.hours_input.TextChanged += new System.EventHandler(this.hours_input_TextChanged);
             // 
-            // textBox4
+            // monthly_input
             // 
-            this.textBox4.Location = new System.Drawing.Point(155, 286);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(142, 20);
-            this.textBox4.TabIndex = 10;
+            this.monthly_input.Location = new System.Drawing.Point(155, 286);
+            this.monthly_input.Name = "monthly_input";
+            this.monthly_input.Size = new System.Drawing.Size(142, 20);
+            this.monthly_input.TabIndex = 10;
+            this.monthly_input.TextChanged += new System.EventHandler(this.monthly_input_TextChanged);
             // 
-            // textBox5
+            // bonus_output
             // 
-            this.textBox5.Location = new System.Drawing.Point(155, 316);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(142, 20);
-            this.textBox5.TabIndex = 11;
+            this.bonus_output.Location = new System.Drawing.Point(155, 316);
+            this.bonus_output.Name = "bonus_output";
+            this.bonus_output.ReadOnly = true;
+            this.bonus_output.Size = new System.Drawing.Size(142, 20);
+            this.bonus_output.TabIndex = 11;
             // 
             // calculate_button
             // 
@@ -195,6 +200,7 @@
             this.calculate_button.TabIndex = 12;
             this.calculate_button.Text = "Calculate";
             this.calculate_button.UseVisualStyleBackColor = true;
+            this.calculate_button.Click += new System.EventHandler(this.calculate_button_Click);
             // 
             // print_button
             // 
@@ -204,6 +210,7 @@
             this.print_button.TabIndex = 13;
             this.print_button.Text = "Print";
             this.print_button.UseVisualStyleBackColor = true;
+            this.print_button.Click += new System.EventHandler(this.print_button_Click);
             // 
             // clear_button
             // 
@@ -213,6 +220,7 @@
             this.clear_button.TabIndex = 14;
             this.clear_button.Text = "Clear";
             this.clear_button.UseVisualStyleBackColor = true;
+            this.clear_button.Click += new System.EventHandler(this.clear_button_Click);
             // 
             // SalesForm
             // 
@@ -222,11 +230,11 @@
             this.Controls.Add(this.clear_button);
             this.Controls.Add(this.print_button);
             this.Controls.Add(this.calculate_button);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.name);
+            this.Controls.Add(this.bonus_output);
+            this.Controls.Add(this.monthly_input);
+            this.Controls.Add(this.hours_input);
+            this.Controls.Add(this.id_input);
+            this.Controls.Add(this.name_input);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -257,11 +265,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox name;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox name_input;
+        private System.Windows.Forms.TextBox id_input;
+        private System.Windows.Forms.TextBox hours_input;
+        private System.Windows.Forms.TextBox monthly_input;
+        private System.Windows.Forms.TextBox bonus_output;
         private System.Windows.Forms.Button calculate_button;
         private System.Windows.Forms.Button print_button;
         private System.Windows.Forms.Button clear_button;
