@@ -86,7 +86,7 @@ namespace Assignment1
 
                 if (int.Parse(hours_input.Text) < 161 && int.Parse(hours_input.Text) > -1)
                 {
-                    int _percenthoursworked = int.Parse(_totalhours) / 160;
+                    double _percenthoursworked = double.Parse(_totalhours) / 160;
                     double _totalbonusamount = int.Parse(_totalsales) * 0.02;
                     _salesbonus = _percenthoursworked * _totalbonusamount;
 
