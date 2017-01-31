@@ -107,7 +107,7 @@ namespace Assignment1
                     //Variable to output sales bonus
 
                     bonus_output.Text = "$" + Convert.ToString(_salesbonus);
-                    monthly_input.Text += "$" + monthly_input.Text;
+                    monthly_input.Text = "$" + monthly_input.Text;
                 }
 
                 //If hours are negative or more than 160
