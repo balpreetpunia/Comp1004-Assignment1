@@ -22,7 +22,7 @@ using System.Windows.Forms;
 
 namespace Assignment1
 {
-    public partial class SalesForm : Form
+    public partial class MailOrder : Form
     {
 
         //Private instance variables
@@ -33,7 +33,7 @@ namespace Assignment1
         private string _totalsales;
         private double _salesbonus;
 
-        public SalesForm()
+        public MailOrder()
         {
             InitializeComponent();
         }
@@ -42,6 +42,8 @@ namespace Assignment1
         {
 
         }
+
+        //This radio button changes the language to english, it is also the default.
 
         private void englishbutton_CheckedChanged(object sender, EventArgs e)
         {
@@ -55,6 +57,8 @@ namespace Assignment1
             clear_button.Text = "Clear";
         }
 
+        //This radio button changes the language to French.
+
         private void frenchbutton_CheckedChanged(object sender, EventArgs e)
         {
             label1.Text = "Nom de l'employé:";
@@ -66,6 +70,8 @@ namespace Assignment1
             print_button.Text = "Impression";
             clear_button.Text = "Clair";
         }
+
+        //This radio button changes the language to Spanish.
 
         private void spanishbutton_CheckedChanged(object sender, EventArgs e)
         {
@@ -81,7 +87,7 @@ namespace Assignment1
 
         private void calculate_button_Click(object sender, EventArgs e)
         {
-            if (name_input.Text != "")
+            if (name_input.Text != "" && id_input.Text != "")
             {
 
                 if (int.Parse(hours_input.Text) < 161 && int.Parse(hours_input.Text) > -1)
@@ -89,8 +95,9 @@ namespace Assignment1
                     double _percenthoursworked = double.Parse(_totalhours) / 160;
                     double _totalbonusamount = int.Parse(_totalsales) * 0.02;
                     _salesbonus = _percenthoursworked * _totalbonusamount;
-
-                    bonus_output.Text = Convert.ToString(_salesbonus);
+            
+                    bonus_output.Text = "$" + Convert.ToString(_salesbonus);
+                    monthly_input.Text += "$" + monthly_input.Text;
                 }
                 else
                 {
@@ -113,7 +120,6 @@ namespace Assignment1
             name_input.Clear();
             id_input.Clear();
             hours_input.Clear();
-            monthly_input.Clear();
             bonus_output.Clear();
         }
 
@@ -134,6 +140,7 @@ namespace Assignment1
 
         private void monthly_input_TextChanged(object sender, EventArgs e)
         {
+
             _totalsales = monthly_input.Text;
         }
     }
