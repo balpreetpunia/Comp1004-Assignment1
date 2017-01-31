@@ -14,6 +14,7 @@ using System.Windows.Forms;
 /// App name - Sales Bonus
 /// Author's name - Balpreeet Punia (200335082)
 /// App Creation Date - 2017/01/29
+/// Version 2.0 - 2017/01/30
 /// App description - The app aims to calculate the bonus amount each employee which is based upon the percentage of hours 
 ///                   they've worked for during the bonus period.
 /// 
@@ -85,35 +86,53 @@ namespace Assignment1
             clear_button.Text = "Claro";
         }
 
+        //Event handler for calculate button
+
         private void calculate_button_Click(object sender, EventArgs e)
         {
-            if (name_input.Text != "" && id_input.Text != "")
+            //Checks if all fields are filled
+
+            if (name_input.Text != "" && id_input.Text != "" && hours_input.Text != "")
             {
+                //Check validation of the hours field
 
                 if (int.Parse(hours_input.Text) < 161 && int.Parse(hours_input.Text) > -1)
                 {
+                    //Alorithm to calculate the sales bonus
+
                     double _percenthoursworked = double.Parse(_totalhours) / 160;
                     double _totalbonusamount = int.Parse(_totalsales) * 0.02;
                     _salesbonus = _percenthoursworked * _totalbonusamount;
             
+                    //Variable to output sales bonus
+
                     bonus_output.Text = "$" + Convert.ToString(_salesbonus);
                     monthly_input.Text += "$" + monthly_input.Text;
                 }
+
+                //If hours are negative or more than 160
                 else
                 {
                     MessageBox.Show("Hours cannot be greater than 160 or less than 0", "Validate Number Of Hours");
                 }
             }
+
+            //If all text fields are not entered
+
             else
             {
                 MessageBox.Show("Please enter all the fields", "Textbox Validation");
             }
         }
 
+        //Event handler for print button
+
         private void print_button_Click(object sender, EventArgs e)
         {
             MessageBox.Show("The form is being sent to the printer","Printer");
         }
+
+        //Event handler for clear button
 
         private void clear_button_Click(object sender, EventArgs e)
         {
@@ -123,20 +142,28 @@ namespace Assignment1
             bonus_output.Clear();
         }
 
+        //Event handler for name text field
+
         private void name_input_TextChanged(object sender, EventArgs e)
         {
             _name = name_input.Text;
         }
+
+        //Event handler for id text field
 
         private void id_input_TextChanged(object sender, EventArgs e)
         {
             _id = id_input.Text;
         }
 
+        //Event handler for hours text field
+
         private void hours_input_TextChanged(object sender, EventArgs e)
         {
             _totalhours = hours_input.Text;
         }
+
+        //Event handler for monthly sales text field
 
         private void monthly_input_TextChanged(object sender, EventArgs e)
         {
