@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Assignment1
 {
-    public partial class Form1 : Form
+    public partial class SalesForm : Form
     {
-        public Form1()
+        public SalesForm()
         {
             InitializeComponent();
+        }
+
+        private void SalesForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
